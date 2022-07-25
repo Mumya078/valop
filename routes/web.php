@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // sfdlşgkfsd
-
+//sadwwdad
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
