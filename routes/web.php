@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,14 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+//// ADMIN PANEL ROUTES ******************
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminHomeController::class, 'index'])->name('index');
+    
+    //// ADMIN GENERAL ROUTES ******************
+    Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
+    Route::post('/setting', [AdminHomeController::class, 'settingUpdate'])->name('setting.update');    
+    
+}); //admin panel routes
