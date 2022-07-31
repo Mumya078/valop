@@ -222,7 +222,7 @@
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Settings &amp; Others</span></li>
             <!-- Setting -->
             <li class="menu-item" id="setting">
-              <a href="#" class="menu-link">
+              <a href="{{route('admin.setting')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Settings</div>
               </a>
