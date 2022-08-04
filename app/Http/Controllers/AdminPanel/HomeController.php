@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -15,18 +16,46 @@ class HomeController extends Controller
     public function index()
     {
         //
-        return view('admin.index');
+        $setting = Setting::getSetting();
+        return view('admin.index', ['setting'=>$setting]);
     }
 
     public function setting()
     {
         //
-        return view('admin.setting.index');
+        $setting = Setting::getSetting();
+        return view('admin.setting.index', ['setting'=>$setting]);
     }
 
-    public function settingupdate()
+    public function settingupdate(Request $request)
     {
         //
+        $id = $request->input('id');
+
+        $setting = Setting::find($id);
+        $setting->title = $request->title;
+        $setting->keywords = $request->keywords;
+        $setting->description = $request->description;
+        $setting->company = $request->company;
+        $setting->address = $request->address;
+        $setting->phone = $request->phone;
+        $setting->fax = $request->fax;
+        $setting->email = $request->email;
+        $setting->smtpserver = $request->smtpserver;
+        $setting->smtpemail = $request->smtpemail;
+        $setting->smtppassword = $request->smtppassword;
+        $setting->smtpport = $request->smtpport;
+        $setting->aboutus = $_POST['aboutus'];
+        $setting->contact = $_POST['contact'];
+        $setting->references = $_POST['references'];
+        $setting->status = $request->status;
+        if($request->hasFile('icon'))
+        {
+            $setting->icon = $request->file('icon')->store('images');
+        }
+
+        $setting->save();
+        return redirect()->route('admin.setting');
     }
 
     /**

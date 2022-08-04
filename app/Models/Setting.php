@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
+
+    public static function getSetting()
+    {
+        $data = Setting::first();
+        if($data===null)
+        {
+            $data = new Setting();
+            $data->save();
+        }
+        return $data;
+    }
 }
