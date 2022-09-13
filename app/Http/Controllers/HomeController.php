@@ -18,6 +18,13 @@ class HomeController extends Controller
 
     }
 
+    public function test()
+    {
+        //
+        return view('home.test');
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -25,6 +25,8 @@
 </head>
 
 <body>
+@yield("subheader")
+
 @include("home.header")
 
 
@@ -36,6 +38,5 @@
 
 
 @include("home.footer")
-@yield('foot')
 </body>
 </html>
